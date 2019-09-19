@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Lucky Sevens</title>
+    <script src="scripts/luckySevens.js" type="text/JavaScript"></script>
+    <style>
+        .row img {
+            height: 220px;
+        }
+
+        .slide-container {
+            width: 100%;
+            /* Width of the outside container */
+        }
+
+        /* The slider itself */
+        .slider {
+            -webkit-appearance: none;
+            /* Override default CSS styles */
+            appearance: none;
+            width: 100%;
+            /* Full-width */
+            height: 25px;
+            /* Specified height */
+            background: #d3d3d3;
+            /* Grey background */
+            outline: none;
+            /* Remove outline */
+            opacity: 0.7;
+            /* Set transparency (for mouse-over effects on hover) */
+            -webkit-transition: .2s;
+            /* 0.2 seconds transition on hover */
+            transition: opacity .2s;
+        }
+
+        /* Mouse-over effects */
+        .slider:hover {
+            opacity: 1;
+            /* Fully shown on mouse-over */
+        }
+
+        /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            /* Override default look */
+            appearance: none;
+            width: 25px;
+            /* Set a specific slider handle width */
+            height: 25px;
+            /* Slider handle height */
+            background: #4CAF50;
+            /* Green background */
+            cursor: pointer;
+            /* Cursor on hover */
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            /* Set a specific slider handle width */
+            height: 25px;
+            /* Slider handle height */
+            background: #4CAF50;
+            /* Green background */
+            cursor: pointer;
+            /* Cursor on hover */
+        }
+
+        .container {
+            margin-bottom: 15px;
+            max-width: 600px;
+        }
+
+        .container-fluid {
+            max-width: 600px;
+        }
+
+        header h1 {
+            font-size: 4.25em;
+        }
+
+        .description {
+            position: fixed;
+            top: 30%;
+            left: 10px;
+            width: 200px;
+            padding: 10px;
+            text-align: center;
+            word-wrap: break-word;
+            background-color: rgba(109, 115, 133, 0.116);
+            border-radius: 5px;
+        }
+
+        button {
+            width: 125px;
+            margin-right: 15px;
+            margin-left: 15px;
+        }
+
+        #description-title h5 {
+            display: block;
+            float: left;
+            font-size:1.25em;
+        }
+
+        #description-title button {
+            display: block;
+            float: right;
+        }
+
+        @media only screen and (max-width: 1000px) {
+            .description {
+                position: relative;
+                width: 80%;
+                margin: auto;
+                margin-bottom: 15px;
+
+            }
+
+            .row img,
+            .container {
+                margin-bottom: 20px;
+            }
+            #close-btn
+            {
+                width: 10%;
+            }
+        }
+    </style>
+</head>
+
+<body onload="init();">
+    <header class="jumbotron text-center" style="padding: 20px 0;">
+        <h1>Lucky Sevens</h1>
+        <img src="images/lucky.svg" alt="four leaf clover" style="height: 100px">
+        </div>
+    </header>
+    <div class="description">
+        <div id="description-title">
+            <h5>
+            Description
+            </h5>
+            <button id="close-btn"  class=" btn btn-danger btn-sm" style="width: 20%" onclick="closeDescription();">X</button>
+        </div>
+        <div style="clear:both"></div>
+        <p>
+            Choose a starting bet and click play. Every time you roll a '7' you will
+            be rewarded with $4. If you don't roll a seven you will be penalized $1.
+            The game is over when you are out of money. You can adjust the speed of game
+            by adjusting the slider.
+        </p>
+    </div>
+    <div class="container text-center" id="imageContainer">
+        <div class="row">
+            <div class="col text-center">
+                <h3 class="text-success" id="currentMoney">
+                    Current Money : $0.00
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class='col-sm'>
+                <img display=block src="images/Zero.png" alt="imageOfDice" id="die1">
+            </div>
+            <div class='col-sm text-center'>
+                <img display=block src="images/Zero.png" alt="imageOfDice" id="die2">
+            </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <form action="" onsubmit="return validateItems();" onreset="resetForm()">
+            <div class="form-group">
+                <h2>
+                    <label for="starting-bet"> Starting Bet:<h3>
+                            (in dollars)
+                        </h3> </label>
+
+                </h2>
+                <input type="number" id="starting-bet" class="form-control">
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary btn-lg ">Play</button>
+                <button type="reset" class="btn btn-danger btn-lg">Reset</button>
+            </div>
+        </form>
+        <div class="slide-container">
+            <label for="playSpeed" id="playSpeedLabel">Turns Per Second:</label>
+            <input type="range" min='1' max='30' class="slider" id="playSpeed">
+        </div>
+
+    </div>
+
+    <div class="accordion container" id='resultsAccordion'>
+        <div class="card">
+            <div class="card-header" id="resultsHeader">
+                <h3 class="mb-0 text-center">
+                    <button class="btn btn-link btn-lg" type="button" data-toggle="collapse" data-target="#collapseOne"
+                        aria-expanded="false" aria-controls="collapseOne">
+                        Results
+                    </button>
+                </h3>
+            </div>
+
+        </div>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#resultsAccordion">
+            <div class="card-body">
+                <div class="container">
+                    <table class="table table-striped table-hover">
+                        <tr class=".active">
+                            <td>
+                                Starting Bet
+                            </td>
+                            <td id="startingBetStat">
+                                $0.00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Total Rolls Before Going Broke
+                            </td>
+                            <td id="rollCount">
+                                0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Total Money Won This Round
+                            </td>
+                            <td id="totalWinnings">
+                                $0.00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Highest Amount Won
+                            </td>
+                            <td id="bestAmount">
+                                $0.00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Roll Count at Highest Amount Won
+                            </td>
+                            <td id="bestRollCount">
+                                0
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

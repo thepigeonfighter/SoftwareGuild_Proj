@@ -1,0 +1,16 @@
+body{
+    background-color: rgba(245, 240, 234, 0.719);
+    text-align: center;
+    padding : 2% 5%;
+}
+td{
+    padding: 2% 5%;
+    width: 33%;
+    vertical-align: top;
+}
+th{
+    padding: 2% 2%;
+    font-size: 130%;
+    vertical-align: top;
+    
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+    Name: George Fabish
+    Date: 9/5/19
+    Last Revision : N/A
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact Info</title>
+    <link href="styles/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <header>
+        <h1>Get in touch......</h1>
+    </header>
+    <nav style="padding: 1%">
+        <a href="index.html">Return Home</a>
+    </nav>
+    <h2>Information Request</h2>
+    <form action="submit.html" method="POST">
+        <label for="firstName">First Name</label><br />
+        <input type="text" id="firstName" name="firstName"><br />
+        <label for="lastName">First Name</label><br />
+        <input type="text" id="lastName" name="lastName"><br />
+        <label for="phoneNumber">Phone Number</label><br />
+        <input type="text" id="phoneNumber" name="phoneNumber"><br />
+        <label for="contactTime">Best Time to Contact</label><br />
+        <select id="contactTime">
+            <option value="morning">Morning (8AM to 12PM Eastern)</option>
+            <option value="afternoon">Afternoon (12PM to 5PM Eastern)</option>
+            <option value="evening">Evening (5PM to 8PM Eastern)</option>
+        </select>
+        <fieldset>
+            <legend>I am interested in (check all that apply)</legend><br />
+            <input type="checkbox" id="frontEnd" name="interests" value="frontEnd">
+            <label for="frontEnd">Front-End Web Development</label><br />
+            <input type="checkbox" id="backEnd" name="interests" value="backEnd">
+            <label for="backEnd">Back-End Web Development</label><br />
+            <input type="checkbox" id="database" name="interests" value="database">
+            <label for="database">Database Design</label><br />
+        </fieldset>
+        <fieldset>
+            <legend>I have filled in the client questionnaire form:</legend>
+            <input type="radio" name="filledOutForm" id="yes">
+            <label for="yes">Yes</label> <br />
+            <input type="radio" name="filledOutForm" id="no">
+            <label for="no">No</label> <br />
+        </fieldset>
+        <label for="additionalInfo">Additional Information</label> <br />
+        <textarea id="additionalInfo"></textarea> <br />
+        <input type="submit" name="submit" value="Submit"><br/><br/>
+    </form>
+        <footer>
+            <p> &copy George Fabish 2019. All Rights Reserved.</p>
+        </footer>
+</body>
+
+</html>

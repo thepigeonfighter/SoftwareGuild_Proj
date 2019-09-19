@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+        type="text/css" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/JavaScript" src="displayEvens.js"></script>
+    <title>Show me the evens</title>
+    <style>
+        form {
+            padding: 0 20%;
+        }
+    </style>
+</head>
+
+<body onload="initTooltip();">
+    <div class="jumbotron">
+        <h1 class="text-center">Find the even numbers betwixt the two numbers</h1>
+    </div>
+    <form name="numbers" class="text-center" onsubmit="return validateItems();">
+        <div class="form-group">
+            <label for="starting-num">Starting Number</label>
+            <input type="number" class="form-control" id='starting-num'>
+        </div>
+        <div class="form-group">
+            <label for="stopping-num">Stopping Number</label>
+            <input type="number" class="form-control" id='stopping-num'>
+        </div>
+        <div class="form-group">
+            <label for="step-num">Step</label>
+            <input type="number" class="form-control" id='step-num'>
+        </div>
+        <button type="submit" class="btn btn-default" data-toggle="tooltip" data-placement="right"
+            title="Click to be surprised">Submit</button>
+    </form>
+    <div class="text-center" id="results">
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    Name : George Fabish
+    Date of Creation : 9/6/19
+    Date of Revision : N/A
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="styles/restaurantStyles.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Lexend+Exa&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="scripts/navbar.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="scripts/contact-form.js"></script>
+    <style>
+        label:required {
+            font-weight: bold;
+
+        }
+
+        input,
+        textarea,
+        select {
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        div {
+            padding: 10px 0;
+        }
+
+        .button {
+            background-color: #536271;
+            color: #f3f3f4;
+            padding: 10px 20px;
+            width: 200px;
+            font-size: 1.25em;
+        }
+
+        .button:hover {
+            font-weight: bold;
+        }
+    </style>
+    <noscript>
+        <style>
+            .page-container {
+                display: none;
+            }
+        </style>
+        <div style="margin-top: 50%;">
+            Please enable javascript if you want to access this site.
+        </div>
+    </noscript>
+</head>
+
+<body>
+    <div class="page-container">
+        <header class="jumbotron mb-0">
+            <h1>
+                Ribs and Squids
+            </h1>
+        </header>
+        <div class="container" style="margin-top: 120px;">
+            <form id="contact-form" action="submit.html" method="POST" onsubmit="return OnContactSubmit(this);">
+                <legend>
+                    <h2>Contact Details</h2>
+                </legend>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control" type="text" id="name" required> <br />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control" type="email" id="email" placeholder="Enter email" required> <br />
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input class="form-control" type="tel" id="phone" required> <br />
+                </div>
+                <div class="form-group">
+                    <label for="inquiryReason">Reason for Inquiry</label>
+                    <select class="form-control" id="inquiryReason">
+                        <option selected value="catering">Catering</option>
+                        <option value="privateParty">Private Party</option>
+                        <option value="feedback">Feedback</option>
+                    </select> <br />
+                </div>
+                <div class="form-group">
+                    <label for="additionalInfo">Additional Information*<br /> </label>
+                    <small id="additionalInfo-help" class="form-text text-muted">* Not Required</small>
+                    <textarea class="form-control" id="additionalInfo"
+                        aria-describedby="additionalInfo-help"></textarea> <br />
+                </div>
+                <div class="form-group">
+                    <label class="form-check-label" for="hasBeenToRestaurant"> Have you been to the restaurant?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="hasBeenToRestaurant" id="no" checked>
+                        <label class="form-check-label" for="no">No</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="hasBeenToRestaurant" id="yes">
+                        <label class="form-check-label" for="yes">Yes</label> <br />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-check-label" for="contactDay">Best days to contact you:</label>
+                    <div class="form-check">
+
+                        <input class="form-check-input" type="checkbox" id="monday" value="monday" name="contactDay">
+                        <label class="form-check-label" for="monday">Monday</label>
+                    </div>
+                    <div class="form-check">
+
+                        <input class="form-check-input" type="checkbox" id="tuesday" value="tuesday" name="contactDay">
+                        <label class="form-check-label" for="tuesday">Tuesday</label>
+                    </div>
+                    <div class="form-check">
+
+                        <input class="form-check-input" type="checkbox" id="wednesday" value="wednesday"
+                            name="contactDay">
+                        <label class="form-check-label" for="wednesday">Wednesday</label>
+                    </div>
+                    <div class="form-check">
+
+                        <input class="form-check-input" type="checkbox" id="thursday" value="thursday"
+                            name="contactDay">
+                        <label class="form-check-label" for="thursday">Thursday</label>
+                    </div>
+                    <div class="form-check">
+
+                        <input class="form-check-input" type="checkbox" id="friday" value="friday" name="contactDay">
+                        <label class="form-check-label" for="friday">Friday</label> <br />
+                    </div>
+
+
+
+
+
+                </div>
+                <div class="form-group">
+                    <input class="button" type="submit" name="submit" value="Send Request">
+                </div>
+
+            </form>
+        </div>
+        <nav>
+            <ul class="nav nav-pills nav-fill">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        <i class="fa fa-home fa-lg"></i>
+                        Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="menu.html"><i class="fa fa-cutlery"></i> Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html"> <i class="fa fa-address-card"></i> Contact Us</a>
+                </li>
+
+
+            </ul>
+
+        </nav>
+        <footer>
+            <p>450 New York Avenue, Irving, Texas, 75063 </p>
+            <p>817-984-7689</p>
+        </footer>
+    </div>
+</body>
+
+</html>
